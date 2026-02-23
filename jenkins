@@ -1,8 +1,13 @@
 pipeline {
     agent any
+stages {  
+    stage('checkout') {
+        steps {
+                    checkout scm
+}
+    }
 
-    stages {
-        stage('Build & test') {
+        stage('Build & Test') {
             steps {
                 sh 'mvn clean install'
             }

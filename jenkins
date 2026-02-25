@@ -11,6 +11,18 @@ stages {
             steps {
                 sh 'mvn clean install'
             }
+     }
+stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t rohith/demo-app:latest .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d -p 8081:8080 rohith/demo-app:latest'
+            }
+
         }
     }
 }
